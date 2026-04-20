@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameVerse – Free Game Explorer</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🎮 GameVerse</h1>
+      <nav>
+        <button id="homeBtn" class="nav-btn active">Home</button>
+        <button id="favBtn" class="nav-btn">Favorites ⭐</button>
+        <button id="randomBtn" class="nav-btn">🎲 Surprise Me</button>
+      </nav>
+    </header>
+
+    <section id="controls">
+      <input type="text" id="searchInput" placeholder="Search games..." />
+      <select id="genreSelect">
+        <option value="">All Genres</option>
+      </select>
+      <select id="platformSelect">
+        <option value="">All Platforms</option>
+        <option value="pc">PC</option>
+        <option value="browser">Browser</option>
+      </select>
+      <select id="sortSelect">
+        <option value="">Sort By</option>
+        <option value="release-date">Release Date</option>
+        <option value="title">Title</option>
+      </select>
+    </section>
+
+    <main>
+      <div id="gamesContainer" class="grid"></div>
+      <div id="favoritesContainer" class="grid hidden"></div>
+    </main>
+
+    <!-- Modal for Game Details -->
+    <div id="gameModal" class="modal hidden">
+      <div class="modal-content">
+        <span id="modalClose" class="close">&times;</span>
+        <img id="modalImg" src="" alt="Game image" />
+        <div class="modal-info">
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <p><strong>Genre:</strong> <span id="modalGenre"></span></p>
+          <p><strong>Platform:</strong> <span id="modalPlatform"></span></p>
+          <p><strong>Publisher:</strong> <span id="modalPublisher"></span></p>
+          <p><strong>Developer:</strong> <span id="modalDeveloper"></span></p>
+          <p><strong>Release:</strong> <span id="modalRelease"></span></p>
+          <a id="modalLink" href="#" target="_blank" class="play-btn"
+            >Play Now</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        Powered by
+        <a>GameVerse</a>
+      </p>
+    </footer>
+
+    <script src="dist/app.js"></script>
+  </body>
+</html>
