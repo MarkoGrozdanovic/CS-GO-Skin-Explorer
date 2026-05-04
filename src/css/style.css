@@ -24,6 +24,7 @@ h1 {
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
+  position: relative;
 }
 
 .card:hover {
@@ -44,6 +45,39 @@ h1 {
 .card p {
   font-size: 14px;
   color: #cbd5f5;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+
+  width: 32px;
+  height: 32px;
+
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s;
+}
+
+.favorite-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.1);
+}
+
+/* aktivno (favorit) stanje */
+.favorite-btn.active {
+  color: #ef4444;
 }
 
 .rarity {

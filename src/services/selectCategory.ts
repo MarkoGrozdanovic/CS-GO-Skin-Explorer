@@ -7,9 +7,12 @@ export const renderSkins = (skins: Skin[]) => {
     .map((skin) => {
       return `
         <div class="card">
+          <button class="favorite-btn" data-id="${skin.id}">♡</button>
+
           <img src="${skin.image}" alt="${skin.name}" />
           <h3>${skin.name}</h3>
           <p>${skin.weapon.name}</p>
+
           <p class="rarity" style="color:${skin.rarity.color}">
             ${skin.rarity.name}
           </p>
@@ -20,10 +23,9 @@ export const renderSkins = (skins: Skin[]) => {
 };
 
 const getByCategory = (skins: Skin[], category: string): Skin[] => {
+  let team = "both";
   if (category === "terrorists" || category === "counter-terrorists") {
-    return skins.filter(
-      (skin) => skin.team.id.toLowerCase() === category.toLowerCase(),
-    );
+    team = category;
   }
 
   if (category === "All") return skins;
@@ -33,12 +35,14 @@ const getByCategory = (skins: Skin[], category: string): Skin[] => {
   );
 };
 
-export const setupCategoryFilter = (allSkins: Skin[]) => {
-  const buttons = document.querySelectorAll(".category-bar button");
-  console.log(buttons);
+export const setupCategoryFilter = (allSkins: Skin[]): void => {
+  const buttons = document.querySelectorAll<HTMLButtonElement>(
+    ".category-guns button",
+  );
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
+      localStorage.removeItem("skins");
       // remove active from all
       buttons.forEach((b) => b.classList.remove("active"));
 
@@ -48,7 +52,7 @@ export const setupCategoryFilter = (allSkins: Skin[]) => {
       const category = btn.getAttribute("data-category")!;
 
       const filtered = getByCategory(allSkins, category);
-
+      localStorage.setItem("skins", JSON.stringify(filtered));
       renderSkins(filtered);
     });
   });
