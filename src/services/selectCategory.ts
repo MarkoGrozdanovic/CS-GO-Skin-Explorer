@@ -6,7 +6,7 @@ export const renderSkins = (skins: Skin[]) => {
   container.innerHTML = skins
     .map((skin) => {
       return `
-        <div class="card">
+        <div class="card" data-id="${skin.id}">
           <button class="favorite-btn" data-id="${skin.id}">♡</button>
 
           <img src="${skin.image}" alt="${skin.name}" />

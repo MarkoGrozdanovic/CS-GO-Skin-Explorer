@@ -1,0 +1,21 @@
+.roulette {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin: 20px 0;
+  border: 2px solid #1e293b;
+}
+
+.roulette-track {
+  display: flex;
+  transition: transform 3s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+.roulette-item {
+  min-width: 120px;
+  padding: 10px;
+  text-align: center;
+  background: #1e293b;
+  margin-right: 5px;
+  color: white;
+}
