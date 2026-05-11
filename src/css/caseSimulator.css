@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0b1220;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* PAGE WRAPPER */
+.page {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   ROULETTE AREA
+========================= */
+
+.roulette-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* WINDOW (IMPORTANT) */
+#wheel-wrapper {
+  width: 900px;
+  height: 200px;
+
+  overflow: hidden;
+
+  border: 2px solid #1f2937;
+  background: #0f172a;
+
+  position: relative;
+}
+
+/* CENTER POINTER */
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  transform: translateX(-50%);
+
+  width: 4px;
+  height: 200px;
+
+  background: red;
+  z-index: 10;
+}
+
+/* =========================
+   WHEEL
+========================= */
+
+#wheel {
+  display: flex;
+  height: 100%;
+
+  transform: translateX(0px);
+
+  will-change: transform;
+}
+
+/* ITEM CARD */
+.item {
+  width: 160px;
+  height: 200px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #1e293b;
+
+  border-right: 2px solid #0b1220;
+}
+
+/* IMAGE */
+.item img {
+  width: 120px;
+  height: 90px;
+  object-fit: contain;
+}
+
+/* TEXT */
+.item p {
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+#open-case {
+  margin-top: 40px;
+
+  padding: 12px 28px;
+
+  font-size: 18px;
+
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+#open-case:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+#result {
+  margin-top: 25px;
+
+  font-size: 24px;
+  font-weight: bold;
+}

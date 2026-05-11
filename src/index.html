@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSGO Skins</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+
+    <div class="header">
+      <h1>CSGO Skins</h1>
+      <div class="menu">
+        <a href="caseSimulator.html">OPEN CASE</a>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search skins..." />
+    </div>
+
+    <div class="category-bar">
+      <div class="category-guns">
+        <button data-category="All" class="active">All</button>
+        <button data-category="Knives">Knives</button>
+        <button data-category="Gloves">Gloves</button>
+        <button data-category="Pistols">Pistols</button>
+        <button data-category="Rifles">Rifles</button>
+        <button data-category="SMGs">SMGs</button>
+        <button data-category="Heavy">Heavy</button>
+      </div>
+      <div>
+        <button id="show-favorites">Show Favorites</button>
+      </div>
+    </div>
+
+    <div id="skins-container" class="grid"></div>
+    <div id="pagination" class="pagination"></div>
+
+    <div id="details-modal" class="modal hidden">
+      <div class="modal-content">
+        <button id="close-modal" class="close-btn">✕</button>
+
+        <img id="details-image" src="" alt="" />
+
+        <h2 id="details-name"></h2>
+
+        <p id="details-weapon"></p>
+
+        <p id="details-rarity"></p>
+
+        <p id="details-description"></p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
