@@ -20,7 +20,7 @@ const main = async () => {
   setupDetails();
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      input.disabled = false;
+      input.hidden = false;
       search();
       setupFavorites();
       setupDetails();
