@@ -16,14 +16,13 @@ const showDetails = (skin: Skin) => {
   modal.classList.remove("hidden");
 };
 
-export const setupDetails = () => {
-  const cards = document.querySelectorAll(".show-details");
-  const skins = getCategorySkins();
-  getFavorites().forEach(favorite => {
-    getCategorySkins().filter(skin => {
-      skin.id = favorite
-    })
-  })
+export const setupDetails = (favorites?: Skin[]) => {
+  const cards = document.querySelectorAll<HTMLButtonElement>(".show-details");
+  let skins:Skin[] = getCategorySkins();
+
+  if(favorites)
+    skins=favorites;
+  
 
   cards.forEach((card) => {
     card.addEventListener("click", () => {
@@ -38,3 +37,8 @@ export const setupDetails = () => {
     modal.classList.add("hidden");
   });
 };
+
+const getFavoriteSkinByIDs = (ids: string[]):Skin[] => {
+  const skins:Skin[] = getCategorySkins();
+  return skins.filter(skin => ids.includes(skin.id))
+}

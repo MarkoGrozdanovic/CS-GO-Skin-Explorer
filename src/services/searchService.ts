@@ -4,27 +4,29 @@ import { setupDetails } from "./detailsService"
 import { updateView, updateViewForFavorites } from "./pagination/pagination";
 import { renderSkins } from "./selectCategory";
 
-export const search = (): void => {
-  const input = document.getElementById("search-input") as HTMLInputElement;
 
-  input.addEventListener("change", (e) => {
+const input = document.getElementById("search-input") as HTMLInputElement;
+
+
+export const search = (): void => {
+  input.addEventListener("input", handleInput);
+  input.addEventListener("change", handleInput);
+};
+
+const handleInput = (e: Event):void => {
     const skins = getCategorySkins();
 
-    const filtered = skins.filter((skin) => {
+    const filtered:Skin[] = skins.filter((skin) => {
       return skin.name
         .toLowerCase()
         .includes((e.currentTarget as HTMLInputElement).value.toLowerCase());
     });
 
-    
-    const skinsForStorage = getCategorySkins();
-
     localStorage.setItem("skins", JSON.stringify(filtered));
-
+    
     renderSkins(filtered);
     setupDetails();
     updateView(1);
 
-    localStorage.setItem("skins", JSON.stringify(skinsForStorage));
-  });
-};
+    localStorage.setItem("skins", JSON.stringify(skins))
+}

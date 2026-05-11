@@ -1,8 +1,7 @@
 import { getFavorites, saveFavorites } from "../helpers/favoritesHelper";
 import { Skin } from "../interfaces/Skin";
 import { setupDetails } from "./detailsService";
-import { updateView, updateViewForFavorites } from "./pagination/pagination";
-import { search } from "./searchService";
+import { updateViewForFavorites } from "./pagination/pagination";
 import { renderSkins } from "./selectCategory";
 
 export const setupFavorites = () => {
@@ -55,19 +54,20 @@ export const showFavorites = (allSkins: Skin[]): void => {
     const favorites = getFavorites();
 
     const filtered = allSkins.filter((skin) => favorites.includes(skin.id));
-
+    console.log(filtered);
+    
     renderSkins(filtered);
     updateViewForFavorites(1);
     setupFavorites();
-    setupDetails();
+    setupDetails(filtered);
   });
 };
 
-export const setInputSrchToDsbld = (disabled: boolean=true) => {
+export const setInputSrchToDsbld = (hidden: boolean=true) => {
     const input = document.getElementById("search-input") as HTMLInputElement;
     
-    if(disabled)
-      input.disabled = true;
+    if(hidden)
+      input.hidden = true;
     else  
-      input.disabled = false; 
+      input.hidden = false; 
 }

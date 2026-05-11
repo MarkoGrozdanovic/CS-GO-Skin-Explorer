@@ -1,3 +1,4 @@
+import { getCategorySkins } from "../../helpers/categorySkinsHelper";
 import { getVisiblePages } from "../../helpers/paginationHelper";
 import { Skin } from "../../interfaces/Skin";
 import { setupDetails } from "../detailsService";
@@ -17,13 +18,17 @@ const getPaginatedData = (): Skin[] => {
 };
 
 export const updateView = (current?: number | null): void => {
+  console.log("Entered updatedView");
+  
   if (current) {
     currentPage = current;
   }
-  const storedSkins = localStorage.getItem("skins");
-  const skins = storedSkins ? JSON.parse(storedSkins) : [];
+  console.log("Update view currentPage: "+currentPage);
+  
+  const skins = getCategorySkins();
   filteredSkins = skins;
-  const paginated = getPaginatedData();
+  const paginated = getPaginatedData()
+
   renderSkins(paginated);
   renderPagination();
   setupFavorites();
@@ -64,6 +69,8 @@ export const updateViewForFavorites = async (
 const renderPagination = (favorites?: boolean) => {
   const container = document.getElementById("pagination")!;
   const totalPages = Math.ceil(filteredSkins.length / itemsPerPage);
+  console.log("renderPagination current page: "+currentPage);
+  
 
   container.innerHTML = "";
 
@@ -95,7 +102,5 @@ const renderPagination = (favorites?: boolean) => {
     container.appendChild(btn);
   });
 };
-function async(curren: any, arg1: any, arg2: any) {
-  throw new Error("Function not implemented.");
-}
+
 

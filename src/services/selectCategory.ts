@@ -1,6 +1,13 @@
 import { Skin } from "../interfaces/Skin";
 
 const container = document.getElementById("skins-container") as HTMLDivElement;
+const buttons = document.querySelectorAll<HTMLButtonElement>(
+    ".category-guns button",
+  );
+const favButton = document.getElementById(
+  "show-favorites",
+) as HTMLButtonElement;
+
 
 export const renderSkins = (skins: Skin[]) => {
   container.innerHTML = skins
@@ -24,11 +31,6 @@ export const renderSkins = (skins: Skin[]) => {
 };
 
 const getByCategory = (skins: Skin[], category: string): Skin[] => {
-  let team = "both";
-  if (category === "terrorists" || category === "counter-terrorists") {
-    team = category;
-  }
-
   if (category === "All") return skins;
 
   return skins.filter(
@@ -37,13 +39,6 @@ const getByCategory = (skins: Skin[], category: string): Skin[] => {
 };
 
 export const setupCategoryFilter = (allSkins: Skin[]): void => {
-  const buttons = document.querySelectorAll<HTMLButtonElement>(
-    ".category-guns button",
-  );
-  const favButton = document.getElementById(
-    "show-favorites",
-  ) as HTMLButtonElement;
-
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       localStorage.removeItem("skins");
