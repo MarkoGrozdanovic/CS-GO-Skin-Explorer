@@ -1,6 +1,6 @@
 import { getCategorySkins } from "../helpers/categorySkinsHelper";
-import { getFavorites } from "../helpers/favoritesHelper";
 import { Skin } from "../interfaces/Skin";
+import { fetchSkins } from "./gamesDbService";
 
 const modal = document.getElementById("details-modal")!;
 const closeBtn = document.getElementById("close-modal")!;
@@ -16,9 +16,9 @@ const showDetails = (skin: Skin) => {
   modal.classList.remove("hidden");
 };
 
-export const setupDetails = (favorites?: Skin[]) => {
+export const setupDetails = async (favorites?: Skin[]) => {
   const cards = document.querySelectorAll<HTMLButtonElement>(".show-details");
-  let skins:Skin[] = getCategorySkins();
+  let skins:Skin[] = await fetchSkins()
 
   if(favorites)
     skins=favorites;
@@ -37,8 +37,3 @@ export const setupDetails = (favorites?: Skin[]) => {
     modal.classList.add("hidden");
   });
 };
-
-const getFavoriteSkinByIDs = (ids: string[]):Skin[] => {
-  const skins:Skin[] = getCategorySkins();
-  return skins.filter(skin => ids.includes(skin.id))
-}
