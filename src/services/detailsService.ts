@@ -6,8 +6,7 @@ const modal = document.getElementById("details-modal")!;
 const closeBtn = document.getElementById("close-modal")!;
 
 const showDetails = (skin: Skin) => {
-  (document.getElementById("details-image") as HTMLImageElement).src =
-    "https://placehold.co/600x400/EEE/31343C";
+  (document.getElementById("details-image") as HTMLImageElement).src = skin.image;
   document.getElementById("details-name")!.textContent = skin.name;
   document.getElementById("details-weapon")!.textContent = skin.weapon.name;
   document.getElementById("details-rarity")!.textContent = skin.rarity.name;
@@ -23,7 +22,6 @@ export const setupDetails = async (favorites?: Skin[]) => {
   if(favorites)
     skins=favorites;
   
-
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       const id = card.getAttribute("data-id");

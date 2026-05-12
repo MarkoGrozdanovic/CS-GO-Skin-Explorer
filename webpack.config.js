@@ -5,6 +5,8 @@ module.exports = {
   entry: {
     main: "./src/index.ts",
     caseSimulator: "./src/caseSimulator.ts",
+    quiz: "./src/quiz.ts",
+    realOrFake: "./src/realOrFake.ts"
   },
 module: {
   rules: [
@@ -42,6 +44,18 @@ module: {
     template: "src/caseSimulator.html",
     filename: "caseSimulator.html",
     chunks: ["caseSimulator"],
+  }),
+
+  new HtmlWebpackPlugin({
+    template: "src/quiz.html",
+    filename: "quiz.html",
+    chunks: ["quiz"],
+  }),
+
+  new HtmlWebpackPlugin({
+    template: "src/realOrFake.html",
+    filename: "realOrFake.html",
+    chunks: ["realOrFake"],
   }),
 ],
 

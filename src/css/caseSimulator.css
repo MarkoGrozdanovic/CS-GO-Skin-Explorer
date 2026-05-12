@@ -10,6 +10,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.backToHome{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.backToHome a{
+  color: white;
+}
+
 /* PAGE WRAPPER */
 .page {
   text-align: center;
@@ -136,5 +146,73 @@ body {
   margin-top: 25px;
 
   font-size: 24px;
+  font-weight: bold;
+}
+
+/* HIDE INITIALLY */
+.hidden {
+  display: none !important;
+}
+
+/* OUTER CONTAINER */
+#result-container {
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* CARD */
+.result-card {
+  display: flex;
+
+  width: 700px;
+
+  background: #0f172a;
+
+  border: 2px solid #1f2937;
+  border-radius: 12px;
+
+  padding: 20px;
+
+  gap: 20px;
+
+  align-items: center;
+}
+
+/* IMAGE */
+.result-card img {
+  width: 220px;
+  height: 160px;
+
+  object-fit: contain;
+
+  background: #1e293b;
+
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/* TEXT AREA */
+.result-info {
+  text-align: left;
+  width: 100%;
+}
+
+.result-info h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* LABELS */
+.result-info p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+/* highlight values */
+.result-info span {
+  color: white;
   font-weight: bold;
 }

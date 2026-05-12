@@ -12,16 +12,21 @@ body {
   align-items: center;
 }
 
+.menu{
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .header .menu a {
   text-decoration: none;
   color: white;
   border-bottom: 2px solid #008000;
-  display: inline-block;
   transition: transform 0.2s ease;
 }
 
 .header .menu a:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 h1 {
@@ -216,7 +221,7 @@ h1 {
 
 /* image */
 .modal-content img {
-  width: 100%;
+  width: 80%;
   border-radius: 8px;
   margin-bottom: 15px;
 }

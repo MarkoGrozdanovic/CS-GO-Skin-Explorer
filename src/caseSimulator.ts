@@ -133,32 +133,35 @@ const spinWheel = (
 const openCase = (
   skins: Skin[]
 ) => {
-  const winner =
-    getWeightedWinner(skins);
+  const winner = getWeightedWinner(skins);
 
-  const wheelItems = buildWheel(
-    skins,
-    winner
-  );
+  const rouletteItems = buildWheel(skins, winner);
 
-  const winnerIndex =
-    wheelItems.findIndex(
-      (skin) => skin.id === winner.id
-    );
+  const winnerIndex = rouletteItems.findIndex(
+  (item) => item.id === winner.id
+);
 
   spinWheel(winnerIndex);
 
+  // 👇 ADD THIS PART HERE
   setTimeout(() => {
-    const result = document.getElementById(
-      "result"
-    ) as HTMLElement;
+    const resultCard = document.querySelector(".result-card") as HTMLDivElement;
+    resultCard.classList.remove("hidden");
+    (document.getElementById("result-image") as HTMLImageElement).src = winner.image;
 
-    result.innerHTML = `
-      🎉 You got:
-      <span style="color:${winner.rarity.color}">
-        ${winner.name}
-      </span>
-    `;
+    (document.getElementById("result-name") as HTMLElement).textContent = winner.name;
+
+    (document.getElementById("result-weapon") as HTMLElement).textContent = winner.weapon.name;
+
+    (document.getElementById("result-category") as HTMLElement).textContent = winner.category.name;
+
+    (document.getElementById("result-rarity") as HTMLElement).textContent = winner.rarity.name;
+
+    (document.getElementById("result-float") as HTMLElement).textContent =
+      `${winner.min_float} - ${winner.max_float}`;
+
+    (document.getElementById("result-pattern") as HTMLElement).textContent =
+      winner.pattern.name;
   }, 6500);
 };
 
@@ -183,9 +186,7 @@ const main = async () => {
   if (button) {
     button.addEventListener(
       "click",
-      () => {
-        console.log("click works");
-        
+      () => {        
         openCase(allSkins);
       }
     );
